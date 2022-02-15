@@ -18,7 +18,7 @@
 // }
 
 
-fetch("./assets/data.json")
+fetch("https://www.dnd5eapi.co/api/spells/")
 .then((response) => response.json())
 .then(onDataReady)
 .catch(onError);
@@ -26,19 +26,41 @@ fetch("./assets/data.json")
 
 
 
+// function onDataReady(data) {
+//     const list = document.getElementById('book-list');
+//     for (const book of data) {
+
+//         const listElement = document.createElement('li');
+
+//         listElement.className += "book-card" + " "
+
+//         addTextToHtmlElement(listElement, book.title, true, 'bold large-font')
+
+//         addTextToHtmlElement(listElement, book.author, true, 'large-font')
+
+//         addTextToHtmlElement(listElement, book.price)
+
+//         list.appendChild(listElement);
+//     }
+
+// }
+
 function onDataReady(data) {
     const list = document.getElementById('book-list');
-    for (const book of data) {
+    list.removeChild()
+    for (const spell of data.results) {
 
         const listElement = document.createElement('li');
 
         listElement.className += "book-card" + " "
 
-        addTextToHtmlElement(listElement, book.title, true, 'bold large-font')
+        listElement.onclick
 
-        addTextToHtmlElement(listElement, book.author, true, 'large-font')
+        addTextToHtmlElement(listElement, spell.name, true, 'bold large-font')
 
-        addTextToHtmlElement(listElement, book.price)
+        // addTextToHtmlElement(listElement, book.author, true, 'large-font')
+
+        // addTextToHtmlElement(listElement, book.price)
 
         list.appendChild(listElement);
     }

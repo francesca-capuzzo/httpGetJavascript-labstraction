@@ -1,0 +1,15 @@
+.book-card{
+    padding: 8px;
+    border-style: solid !important;
+    border: 1px;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.large-font{
+    font-size: large;
+}

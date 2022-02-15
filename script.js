@@ -18,7 +18,7 @@
 // }
 
 
-fetch("https://cat-fact.herokuapp.com/facts")
+fetch("./assets/data.json")
 .then((response) => response.json())
 .then(onDataReady)
 .catch(onError);
@@ -27,7 +27,34 @@ fetch("https://cat-fact.herokuapp.com/facts")
 
 
 function onDataReady(data) {
-console.log(data)
+    const list = document.getElementById('book-list');
+    for (const book of data) {
+
+        const listElement = document.createElement('li');
+
+        listElement.className += "book-card" + " "
+
+        addTextToHtmlElement(listElement, book.title, true, 'bold large-font')
+
+        addTextToHtmlElement(listElement, book.author, true, 'large-font')
+
+        addTextToHtmlElement(listElement, book.price)
+
+        list.appendChild(listElement);
+    }
+
+}
+
+function addTextToHtmlElement(htmlElement, text, isNewLine = false, className){
+    const span = document.createElement('span');
+    span.className += className + " "    
+    const textNode = document.createTextNode(text);
+    span.appendChild(textNode);
+    htmlElement.appendChild(span);
+    if (isNewLine) {
+        const newLine = document.createElement('br');
+        htmlElement.appendChild(newLine);
+    }
 }
 
 function onError(error) {
